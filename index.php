@@ -6,13 +6,15 @@ require 'functions.php';
 
 require 'database.php';
 
-$db = new Database();
+$config = require 'config.php';
 
-$post = $db->query("select * from posts where id = 1");
+$db = new Database($config['database']);
 
-//print_r($posts);
+$post = $db->query("select * from posts");
 
-dd($post['title']);
+dd($post);
+//$post[1]['title']
+//dd($post['title']);
 //foreach ($posts as $post){
 //    echo "<li>". $post['title']."</li>";
 //}
