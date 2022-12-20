@@ -13,10 +13,10 @@ class Database{
         ]);
     }
 
-    public function query($condition){
-        $statement = $this->connection->prepare($condition);
-        $statement->execute();
+    public function query($query, $params=[]){
+        $statement = $this->connection->prepare($query);
+        $statement->execute($params);
 
-        return $statement->fetchAll();
+        return $statement;
     }
 }

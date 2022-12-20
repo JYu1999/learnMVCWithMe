@@ -10,7 +10,10 @@ $config = require 'config.php';
 
 $db = new Database($config['database']);
 
-$post = $db->query("select * from posts");
+$id = $_GET['id'];
+$query = "select * from posts where id= ?";
+
+$post = $db->query($query,[$id])->fetch();
 
 dd($post);
 //$post[1]['title']
